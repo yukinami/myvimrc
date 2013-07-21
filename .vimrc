@@ -61,6 +61,8 @@ Bundle 'FuzzyFinder'
 
 nmap <leader>fb :FufBuffer<cr>
 nmap <leader>ff :FufFile<cr>
+nmap <leader>fc :FufCoverageFile<cr>
+nmap <leader>fd :FufDir<cr>
 nmap <leader>bf :FufBookmarkFileAdd<cr>
 nmap <leader>bd :FufBookmarkDirAdd<cr>
 nmap <leader>fbf :FufBookmarkFile<cr>
@@ -68,7 +70,6 @@ nmap <leader>fbd :FufBookmarkDir<cr>
 nmap <leader>ft :FufTag<cr>
 nmap <leader>fbt :FufBufferTag<cr>
 nmap <leader>fj :FufJumpList<cr>
-nmap <leader>fc :FufChangeList<cr>
 
 """"""""""""""""""""""""""""""""""
 " My Bundle here:
@@ -153,6 +154,14 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 """"""""""""""""""""""""""""""""""""
+"javacomplete"
+Bundle 'javacomplete'
+
+if has("autocmd")
+  autocmd Filetype java setlocal omnifunc=javacomplete#Complete
+endif
+
+""""""""""""""""""""""""""""""""""""
 Bundle 'fholgado/minibufexpl.vim'
 
 """"""""""""""""""""""""""""""""""""
@@ -170,7 +179,18 @@ Bundle 'tpope/vim-rails'
 " surround
 Bundle 'tpope/vim-surround'
 
-"""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""
+Bundle 'mileszs/ack.vim'
+
+""""""""""""""""""""""""""""""""""""
+"quickfix
+
+nmap <leader>cn :cn<cr>
+nmap <leader>cp :cp<cr>
+nmap <leader>cw :cw<cr>
+nmap <leader>ccl :ccl<cr>
+
+""""""""""""""""""""""""""""""""""""
 filetype plugin indent on
 
 
@@ -202,6 +222,9 @@ endif
 
 
 autocmd BufNewFile,BufRead afiedt.buf setf sql
+autocmd BufNewFile,BufRead *.html.erb set filetype=html.eruby
 
 set dict+=~/.vim/dict/**
 set complete=.,k,w,b,t,i
+
+
